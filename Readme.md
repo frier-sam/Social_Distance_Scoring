@@ -18,8 +18,8 @@ There are cases for ditance being maintaned in therms of depth, from camera whic
 ### Usage
   #### installation
     
-        git clone this
-        cd 
+        git clone https://github.com/frier-sam/Social_Distance_Scoring.git
+        cd Social_Distance_Scoring/
         pip install -r requirements.txt
         python app.py
         
