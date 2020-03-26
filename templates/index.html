@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>scn</title>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/Drag--Drop-Upload-Form.css">
+    <link rel="stylesheet" href="/static/css/responsive-navbar.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md">
+        <div class="container-fluid"><a class="navbar-brand" href="#">Social Distance Scoring</a>
+            <hr><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="https://github.com/frier-sam/Social_Distance_Scoring">Github</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="https://github.com/frier-sam/Social_Distance_Scoring/blob/master/Readme.md">Theory</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="https://github.com/frier-sam">Author</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <hr>
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center">
+                  <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data" target="dummyframe">
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="file-picker" name="file">
+                      <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                      <!-- <strong>Select File:</strong><br>
+                      <input id="file-picker" type="file" name="file" accept="image/*" multiple>
+                      <input type="submit" value="Upload!" id="upload-button">
+                    -->
+
+
+                      <hr>
+                      <img id="blah" src="#" alt="your image" class='col-12'/>
+                      <hr>
+                      <input type="submit" class="btn btn-info" id="upload-button" value="Rate This image">
+                  </form>
+                </div>
+                <div class="col-md-6 text-center">
+                    <p class="text-center"><strong>Score</strong></p>
+                    <strong><iframe name="dummyframe" id="dummyframe" class='text-center' style='border:none'></iframe></strong>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#file-picker").change(function(){
+        readURL(this);
+    });
+</script>
+<script>
+
+    $("#file-picker").change(function(){
+
+        var input = document.getElementById('file-picker');
+
+        for (var i=0; i<input.files.length; i++)
+        {
+        //koala.jpg, koala.JPG substring(index) lastIndexOf('a') koala.1.jpg
+            var ext= input.files[i].name.substring(input.files[i].name.lastIndexOf('.')+1).toLowerCase()
+
+            if ((ext == 'jpg') || (ext == 'png'))
+            {
+                $("#msg").text("Files are supported")
+            }
+            else
+            {
+                $("#msg").text("Files are NOT supported")
+                document.getElementById("file-picker").value ="";
+            }
+
+        }
+
+
+    } );
+
+</script>
+
+</html>
