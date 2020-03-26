@@ -4,6 +4,7 @@ This package helps in scoring a picture to quantify the social distancing factor
 Score ranges for 0-10 where 
 
 0 - well maintained social distancing(people are far)
+
 10 - social distancing rules are ignored(people are very near to each other)
 
 
