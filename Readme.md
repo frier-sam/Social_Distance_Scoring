@@ -24,7 +24,9 @@ There are cases for ditance being maintaned in therms of depth, from camera whic
         python app.py
         
  Then go to http://localhost:4444
-    
+ 
+ images are saved in image folder(that will be created automatically)
+ if you don't want to save the images that you scored, uncommet the line 30 in app.py    
     
     
 #### Known problem that can be improved upon
